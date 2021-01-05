@@ -19,7 +19,7 @@ book = pd.read_csv(path+'book_narrow_BTC-USD_2018.delim', sep = '|')
 trade = pd.read_csv(path+'trades_narrow_BTC-USD_2018.delim', sep = '|')
 #%%
 book['spread'] = book['Ask1PriceMillionths'] - book['Bid1PriceMillionths']
-book['Sratio'] = book['Bid1SizeBillionths'] / book['Ask1SizeBillionths']
+book['Sratio'] = book['Bid1SizeBillionths'] - book['Ask1SizeBillionths']
 #%%
 book_seg1 = book.loc[(book['received_utc_nanoseconds'] >= 1522627200*1e9) & (book['received_utc_nanoseconds'] < (1522627200 + 5*24*3600)*1e9)].copy()
 trade_seg1 = trade.loc[(trade['received_utc_nanoseconds'] >= 1522627200*1e9) & (trade['received_utc_nanoseconds'] < (1522627200 + 5*24*3600)*1e9)].copy()
